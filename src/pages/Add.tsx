@@ -3,11 +3,13 @@ import React from 'react'
 const Add = () => {
   return (
     <>
-        <form action="">
-            <input type="date" placeholder='enter date' />
-            <input type="text" />
-            <input type="text" />
-            <input type="text" />
+        <form className='d-flex flex-column' action="">
+            <input name='date' type="date" placeholder='enter date' />
+            <input name='text' type="text" placeholder='enter type' />
+            <input name='number' type="number" placeholder='enter amount'/>
+            <input name='text' type="text" placeholder='enter category'/>
+            <input name='text' type="text" placeholder='enter category'/>
+            <button>Add +</button>
         </form>
     </>
   )
