@@ -51,7 +51,15 @@ class DB {
         localStorage.setItem("i-user", JSON.stringify(newUser));
     }
 
-    
+    addTransaction(data: Omit<User, "username">): void {
+        const newUser: User = {
+            ...this.template,
+            transactions: [...this.user.transactions, data.transactions],
+        };
+
+        this.user = newUser;
+        localStorage.setItem("i-user", JSON.stringify(newUser));
+    }
 
 }
 

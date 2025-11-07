@@ -1,11 +1,13 @@
 import { useState } from "react"
-
+import DB from "../components/UserData"
 
 const Login = () => {
     const [username, setUsername] = useState('')
 
+    const user = new DB
+
     const addUser = () => {
-        
+        user.addUser({username})
     }
 
     return (
@@ -20,7 +22,7 @@ const Login = () => {
                         <input onChange={(e)=> setUsername(e.target.value)} type="text" id='username' />
                     </div>
 
-                    <button onClick={(e)=> addUser(e)}>Continue</button>
+                    <button onClick={()=> addUser()}>Continue</button>
                 </form>
             </div>
         </>
