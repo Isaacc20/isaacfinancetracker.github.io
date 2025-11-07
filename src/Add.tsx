@@ -1,8 +1,9 @@
 import React, { useState } from 'react'
-import { Link } from 'react-router-dom'
+import { Link, useNavigate } from 'react-router-dom'
 import DB from './components/UserData'
 
 const Add = () => {
+    const navigate = useNavigate()
     const [date, setDate] = useState('')
     const [type, setType] = useState<'credit' | 'debit'>('credit')
     const [amount, setAmount] = useState(0)
@@ -19,7 +20,10 @@ const Add = () => {
         reason
     }
 
-    const addTrac = user.addTransaction
+    const addTrac = () => {
+        user.addTransaction(transaction)
+        navigate('/')
+    }
 
     const changeType = (type: string) => {
         if (type === 'credit') {
@@ -43,7 +47,7 @@ const Add = () => {
                     <input onChange={(e) => setCategory(e.target.value)} name='category' type="text" placeholder='enter category' />
                     <input onChange={(e) => setReason(e.target.value)} name='reason' type="text" placeholder='enter reason' />
                 </div>
-                <button onClick={() => addTrac(transaction)}>Add +</button>
+                <button onClick={() => addTrac()}>Add +</button>
             </form>
             <Link to={'/'}>Go back</Link>
         </>
