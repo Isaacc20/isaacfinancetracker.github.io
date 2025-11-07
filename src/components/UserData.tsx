@@ -15,15 +15,7 @@ class DB {
     user: User;
     private template: User = {
         username: '',
-        transactions: [
-            {
-                date: '',
-                type: 'credit',
-                amount: 0,
-                category: '',
-                reason: '',
-            }
-        ]
+        transactions: []
     }
 
     constructor() {
@@ -38,7 +30,7 @@ class DB {
     }
 
     getUser() {
-        return this.user
+        return this.user;
     }
 
     addUser(data: Omit<User, "transactions">): void {
@@ -60,7 +52,6 @@ class DB {
         this.user = newUser;
         localStorage.setItem("i-user", JSON.stringify(newUser));
     }
-
 }
 
-export default DB
+export default DB;
