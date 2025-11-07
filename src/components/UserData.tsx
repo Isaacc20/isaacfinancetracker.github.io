@@ -1,14 +1,14 @@
 export interface User {
     username: string,
-    transactions: [
-        {
-            date: string,
-            type: 'credit' | 'debit',
-            amount: number,
-            category: string,
-            reason: string,
-        }
-    ]
+    transactions: Transaction[]
+}
+
+export interface Transaction {
+    date: string;
+    type: "credit" | "debit";
+    amount: number;
+    category: string;
+    reason: string;
 }
 
 class DB {
@@ -51,10 +51,10 @@ class DB {
         localStorage.setItem("i-user", JSON.stringify(newUser));
     }
 
-    addTransaction(data: Omit<User, "username">): void {
+    addTransaction(transaction: Transaction): void {
         const newUser: User = {
-            ...this.template,
-            transactions: [...this.user.transactions, data.transactions],
+            ...this.user,
+            transactions: [...this.user.transactions, transaction],
         };
 
         this.user = newUser;
